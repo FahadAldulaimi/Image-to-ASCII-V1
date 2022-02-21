@@ -1,9 +1,9 @@
 from PIL import Image
 
-# ascii characters used to build the output text
+# ascii characters used in this code
 ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
 
-# resize image according to a new width
+# resize image  to a new width
 def resize_image(image, new_width=100):
     width, height = image.size
     ratio = height/width
@@ -23,7 +23,7 @@ def pixels_to_ascii(image):
     return(characters)    
 
 def main(new_width=100):
-    # attempt to open image from user-input
+    # attempt to open image from user-input (must be a local file)
     path = input("Enter a valid pathname to an image:\n")
     try:
         image = Image.open(path)
@@ -41,9 +41,10 @@ def main(new_width=100):
     # print result
     print(ascii_image)
     
-    # save result to "ascii_image.txt"
+    # save result to "ascii_image.txt" can be buggy at times and will not print sometimes on certain macOS
     with open("ascii_image.txt", "w") as f:
         f.write(ascii_image)
  
+
 # run program
 main()
